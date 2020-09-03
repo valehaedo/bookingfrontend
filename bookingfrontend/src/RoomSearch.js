@@ -1,5 +1,7 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
+import { Container, Card, CardTitle, CardBody, Button, FormGroup, Input, Label } from 'reactstrap';
+
 
 const RoomItem = (props) => {
 
@@ -21,33 +23,43 @@ const RoomSearch = () => {
         );
         setListRooms(response.data);
     };
-    
+
     return (
-        <div>
-            
-                <label>
-                    Room ID:
-            <input className="search-bar" type="text" value={roomId} onChange={(e) => setRoomId(e.target.value)}/>
-                </label>
+        <Container>
+            <Card body inverse color="danger">
+                <CardBody className="text-center">
+                    <div>
+                        <label>
+                            <CardTitle><h4>Room ID:</h4></CardTitle>
+                            <input className="search-bar" type="text" value={roomId} onChange={(e) => setRoomId(e.target.value)} />
+                        </label>
+                    </div>
+                    <div>
+                        <FormGroup check>
+                            <Input type="checkbox" name="check" id="exampleCheck" />
+                            <Label for="exampleCheck" check><h4>Get All:</h4></Label>
+                        </FormGroup>
+                    </div>
+                    <div>
+                        <FormGroup check>
+                            <Input type="checkbox" name="check" id="exampleCheck" />
+                            <Label for="exampleCheck" check><h4>Delete:</h4></Label>
+                        </FormGroup>
+                    </div>
+                    <div>
+                        <Button className="submit-button btn-outline-warning btn-lg" onClick={handleSearchClicked}>Search</Button>
+                    </div>
+                    <ul>
+                        {listRooms.map((room) =>
+                            <RoomItem roomId={room._id} number={room.number} people={room.number} />)}
+                        {console.log(listRooms)}
 
-                Get All:
+                    </ul>
 
-            <input type = "checkBox"/>
-                
-                Delete:
-            
-                <input type = "checkBox"/>
-               
-                <button className="submit-button" type="button" onClick={handleSearchClicked}>Search</button>
-                <ul>
-                {listRooms.map((room) =>
-                    <RoomItem  roomId={room._id} number={room.number} people={room.number}/>)}
-                    {console.log(listRooms)}
 
-            </ul>
-            
-            
-        </div>
+                </CardBody>
+            </Card>
+        </Container>
     )
 }
 

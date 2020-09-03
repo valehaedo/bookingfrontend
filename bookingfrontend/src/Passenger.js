@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from "axios";
+import { Container, Card, CardTitle, CardBody, Button } from 'reactstrap';
 
 const Passenger = (props) => {
 
@@ -15,30 +16,45 @@ const Passenger = (props) => {
             // Respuesta del servidor esta dentro de .data
             console.log(response.data);
         } catch (error) {
-            console.error(error);   
+            console.error(error);
         }
     }
 
     return (
+
+        <Container>
+            <Card body inverse color="success">
+                <CardBody className="text-center">
+
+
+
         <div>
-            <form>
-                <label>
-                    Name:
+
+            <label>
+            <CardTitle><h4> Name:</h4></CardTitle>
                     <input className="search-bar" type="text" value={nombre} onChange={(event) => setNombre(event.target.value)} />
-                </label>
-                <label>
-                    Apellido:
-                    <input className="search-bar" type="text" value={apellido} onChange={(event) => setApellido(event.target.value)} />
-                </label>
-                <label>
-                    Pasaporte:
-                    <input className="search-bar" type="text" value={pasaporte} onChange={(e) => setPasaporte(e.target.value)} />
-                </label>
-
-                <button className="submit-button" type="button" onClick={onSaveClicked}>Save</button>
-
-            </form>
+            </label>
         </div>
+        <div>
+
+            <label>
+            <CardTitle><h4> Apellido:</h4></CardTitle>
+                    <input className="search-bar" type="text" value={apellido} onChange={(event) => setApellido(event.target.value)} />
+            </label>
+        </div>
+        <div>
+
+            <label>
+            <CardTitle><h4>Pasaporte:</h4></CardTitle>
+                    <input className="search-bar" type="text" value={pasaporte} onChange={(e) => setPasaporte(e.target.value)} />
+            </label>
+        </div>
+        <div>
+            <Button className="submit-button btn-outline-info btn-lg" type="button" onClick={onSaveClicked}>Save</Button>
+        </div>
+                </CardBody>
+            </Card>
+        </Container>
     )
 }
 

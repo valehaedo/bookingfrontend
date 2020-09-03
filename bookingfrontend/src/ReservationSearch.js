@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from "axios";
+import { Container, Card, CardTitle, CardBody, Button, FormGroup, Input, Label } from 'reactstrap';
 
 const ReservationItem = (props) => {
 
@@ -26,30 +27,48 @@ const ReservationSearch = () => {
     };
 
     return (
-        <div>
-            <label>
-                Date from:
-            <input className="search-bar" type="text" value={dateFrom} onChange={(e) => setDateFrom(e.target.value)} />
-            </label>
-            <label>
-                Date To:
-            <input className="search-bar" type="text" value={dateTo} onChange={(e) => setDateTo(e.target.value)} />
-            </label>
-            <label>
-                Room ID:
-            <input className="search-bar" type="text" value={roomId} onChange={(e) => setRoomId(e.target.value)} />
-            </label>
-                Get all the Reservations:
-            <input type="checkBox" />
+        <Container>
+            <Card body inverse color="secondary">
+                <CardBody className="text-center">
 
-            <button className="submit-button" type="button" onClick={handleSearchClicked}>Search</button>
-            <ul>
-                {listReservation.map((reservation) =>
-                    <ReservationItem date={reservation.date} roomId={reservation.roomId} estado={reservation.estado}/>)}
-                    {console.log(listReservation)}
+                    <div>
+                        <label>
+                            <CardTitle><h4>Date from:</h4></CardTitle>
+                            <input className="search-bar" type="text" value={dateFrom} onChange={(e) => setDateFrom(e.target.value)} />
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            <CardTitle><h4>Date To:</h4></CardTitle>
+                            <input className="search-bar" type="text" value={dateTo} onChange={(e) => setDateTo(e.target.value)} />
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            <CardTitle><h4>Room ID:</h4></CardTitle>
+                            <input className="search-bar" type="text" value={roomId} onChange={(e) => setRoomId(e.target.value)} />
+                        </label>
+                    </div>
+                    <div>
 
-            </ul>
-        </div>
+                        
+                        <FormGroup check>
+                            <Input type="checkbox" name="check" id="exampleCheck" />
+                            <Label for="exampleCheck" check><h4>Get all the Reservations:</h4></Label>
+                        </FormGroup>
+                    </div>
+                    <div>
+                        <Button className="submit-button btn-outline-warning btn-lg" onClick={handleSearchClicked}>Search</Button>
+                    </div>
+                    <ul>
+                        {listReservation.map((reservation) =>
+                            <ReservationItem date={reservation.date} roomId={reservation.roomId} estado={reservation.estado} />)}
+                        {console.log(listReservation)}
+
+                    </ul>
+                </CardBody>
+            </Card>
+        </Container>
     )
 }
 
