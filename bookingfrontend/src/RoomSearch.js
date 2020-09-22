@@ -1,62 +1,75 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Container, Card, CardTitle, CardBody, Button, FormGroup, Input, Label } from 'reactstrap';
+import {
+    Container, Card, CardTitle, CardBody, Button, FormGroup, Input, Label, Table, InputGroup,
+    InputGroupText
+} from 'reactstrap';
 
-
-const RoomItem = (props) => {
-
-    return <li><div>{props.roomId + " " + props.number + " " + props.people}</div></li>
+/**
+ * Representa la fila de la tabla que muestra los datos de la habitacion.
+ */
+const RoomRow = (props) => {
+    
+        const [number, setNumber] = useState('');         
+        const handleDeleteRoom = async () => {
+            await axios.delete (
+                `http://localhost:3001/rooms/${props.number}`  
+            )
+          
+    };
+    return (
+        <tr>
+            <Button className="button btn-outline-warning btn-sm" onClick={handleDeleteRoom}>Delete</Button>            
+            <td>{props.number}</td>
+            <td>{props.bed}</td>
+            <td>{props.extraBed}</td>
+            <td>{props.people}</td>
+        </tr>
+    );
 }
 
 const RoomSearch = () => {
-    const [roomId, setRoomId] = useState('');
+    const [number, setNumber] = useState('');
     const [listRooms, setListRooms] = useState([]);
-    //const rooms = [{number: 1, bed: 1, extraBed: 1, people: 1},
-    //{number:2, bed: 3, extraBed: 1, people: 4}];
-    //const listRooms = rooms.map((room) =>
-    //<li>{room.number + " " + room.bed + " " + room.extraBed+" "+ room.people}</li>
-    //);
 
     const handleSearchClicked = async () => {
         const response = await axios.get(
-            `http://localhost:3001/rooms/?roomId=${roomId}`
+            `http://localhost:3001/rooms/?number=${number}`
         );
         setListRooms(response.data);
     };
 
+    console.log(listRooms)
+
     return (
         <Container>
+            <CardTitle><h2>Search a Room</h2></CardTitle>
             <Card body inverse color="danger">
                 <CardBody className="text-center">
                     <div>
                         <label>
-                            <CardTitle><h4>Room ID:</h4></CardTitle>
-                            <input className="search-bar" type="text" value={roomId} onChange={(e) => setRoomId(e.target.value)} />
+                            <CardTitle><h4>Room Number:</h4></CardTitle>
+                            <input className="search-bar" type="text" value={number} onChange={(e) => setNumber(e.target.value)} />
                         </label>
                     </div>
                     <div>
-                        <FormGroup check>
-                            <Input type="checkbox" name="check" id="exampleCheck" />
-                            <Label for="exampleCheck" check><h4>Get All:</h4></Label>
-                        </FormGroup>
+                        <Button className="button btn-outline-warning btn-lg" onClick={handleSearchClicked}>Search</Button>
                     </div>
-                    <div>
-                        <FormGroup check>
-                            <Input type="checkbox" name="check" id="exampleCheck" />
-                            <Label for="exampleCheck" check><h4>Delete:</h4></Label>
-                        </FormGroup>
-                    </div>
-                    <div>
-                        <Button className="submit-button btn-outline-warning btn-lg" onClick={handleSearchClicked}>Search</Button>
-                    </div>
-                    <ul>
-                        {listRooms.map((room) =>
-                            <RoomItem roomId={room._id} number={room.number} people={room.number} />)}
-                        {console.log(listRooms)}
-
-                    </ul>
-
-
+                    <Table>
+                        <thead>
+                            <tr>
+                                <th>Select</th>
+                                <th>Room Number </th>
+                                <th>Number of Beds</th>
+                                <th>Extra Beds</th>
+                                <th>Number of people </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {listRooms.map((room, i) => <RoomRow key={i} number={room.number} bed={room.bed} extraBed={room.extraBed} people={room.people} />)}
+                        </tbody>
+                        
+                    </Table>
                 </CardBody>
             </Card>
         </Container>

@@ -23,36 +23,37 @@ const Reservation = (props) => {
 
     return (
         <Container>
+            <CardTitle><h2>New Reservation</h2></CardTitle>
             <Card body inverse color="warning">
                 <CardBody className="text-center">
                     <div className="input-group mb-3">
 
                         <label>
-                           <CardTitle><h4>ID pasenger:</h4></CardTitle>
-            <input className="search-bar" type="text" value={IdPassenger} onChange={(event) => setIdPasanger(event.target.value)} />
+                            <CardTitle><h4>ID pasenger:</h4></CardTitle>
+                            <input className="search-bar" type="text" value={IdPassenger} onChange={(event) => setIdPasanger(event.target.value)} />
                         </label>
                     </div>
                     <div className="input-group mb-3">
                         <label>
-                        <CardTitle><h4>Date:</h4></CardTitle>
-            <input className="search-bar" type="text" value={date} onChange={(event) => setDate(event.target.value)} />
+                            <CardTitle><h4>Date:</h4></CardTitle>
+                            <input className="search-bar" type="text" value={date} onChange={(event) => setDate(event.target.value)} />
                         </label>
                     </div>
                     <div className="input-group mb-3">
                         <label>
-                        <CardTitle><h4>Room Id:</h4></CardTitle>
-            <input className="search-bar" type="text" value={roomId} onChange={(event) => setRoomId(event.target.value)} />
+                            <CardTitle><h4>Room Id:</h4></CardTitle>
+                            <input className="search-bar" type="text" value={roomId} onChange={(event) => setRoomId(event.target.value)} />
                         </label>
                     </div>
                     <div className="input-group mb-3">
 
                         <label>
-                        <CardTitle><h4>State:</h4></CardTitle>
-                    <input className="search-bar" type="text" value={estado} onChange={(event) => setEstado(event.target.value)} />
+                            <CardTitle><h4>State:</h4></CardTitle>
+                            <input className="search-bar" type="text" value={estado} onChange={(event) => setEstado(event.target.value)} />
                         </label>
                     </div>
                     <div >
-                        <Button  className="submit-button btn-outline-danger btn-lg" onClick={onSaveClicked}>Save</Button>
+                        <Button className="submit-button btn-outline-danger btn-lg" onClick={onSaveClicked}>Save</Button>
 
                     </div>
                 </CardBody>

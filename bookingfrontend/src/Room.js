@@ -22,6 +22,7 @@ const Room = (props) => {
     }
     return (
         <Container>
+                    <CardTitle><h2>New Room</h2></CardTitle>
             <Card body inverse color="primary">
                 <CardBody className="text-center">
                     <div className="input-group mb-3">

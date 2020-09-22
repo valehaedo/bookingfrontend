@@ -28,6 +28,7 @@ const ReservationSearch = () => {
 
     return (
         <Container>
+            <CardTitle><h2>Search a Reservation</h2></CardTitle>
             <Card body inverse color="secondary">
                 <CardBody className="text-center">
 
@@ -51,7 +52,7 @@ const ReservationSearch = () => {
                     </div>
                     <div>
 
-                        
+
                         <FormGroup check>
                             <Input type="checkbox" name="check" id="exampleCheck" />
                             <Label for="exampleCheck" check><h4>Get all the Reservations:</h4></Label>

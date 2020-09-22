@@ -23,6 +23,7 @@ const Passenger = (props) => {
     return (
 
         <Container>
+            <CardTitle><h2>New Passenger</h2></CardTitle>
             <Card body inverse color="success">
                 <CardBody className="text-center">
 

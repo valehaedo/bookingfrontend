@@ -32,60 +32,61 @@ const PassengerSearch = () => {
 
     return (
         <Container>
+            <CardTitle><h2>Search a Passenger</h2></CardTitle>
             <Card body inverse color="info">
                 <CardBody className="text-center">
 
 
-                <div className="input-group mb-3">
-                    <label>
+                    <div className="input-group mb-3">
+                        <label>
 
-                        <CardTitle><h4>Id from pasenger:</h4></CardTitle>
-                        <input className="search-bar" type="text" value={passengerId} onChange={(e) => setPassengerId(e.target.value)} />
-                    </label>
-                </div>
-                <div className="input-group mb-3">
+                            <CardTitle><h4>Id from pasenger:</h4></CardTitle>
+                            <input className="search-bar" type="text" value={passengerId} onChange={(e) => setPassengerId(e.target.value)} />
+                        </label>
+                    </div>
+                    <div className="input-group mb-3">
 
-                    <label>
-                        <CardTitle><h4>Nombre:</h4></CardTitle>
+                        <label>
+                            <CardTitle><h4>Nombre:</h4></CardTitle>
 
-                        <input className="search-bar" type="text" value={nombre} onChange={(e) => setNombre(e.target.value)} />
-                    </label>
-                </div >
-                <div className="input-group mb-3">
+                            <input className="search-bar" type="text" value={nombre} onChange={(e) => setNombre(e.target.value)} />
+                        </label>
+                    </div >
+                    <div className="input-group mb-3">
 
-                    <label>
-                        <CardTitle><h4> Apellido:</h4></CardTitle>
-                        <input className="search-bar" type="text" value={apellido} onChange={(e) => setApellido(e.target.value)} />
-                    </label>
-                </div>
-                <div className="input-group mb-3">
+                        <label>
+                            <CardTitle><h4> Apellido:</h4></CardTitle>
+                            <input className="search-bar" type="text" value={apellido} onChange={(e) => setApellido(e.target.value)} />
+                        </label>
+                    </div>
+                    <div className="input-group mb-3">
 
-                    <label>
-                        <CardTitle><h4>Pasaporte:</h4></CardTitle>
-                        <input className="search-bar" type="text" value={pasaporte} onChange={(e) => setPasaporte(e.target.value)} />
-                    </label>
-                </div>
-                <div className="input-group mb-3">
+                        <label>
+                            <CardTitle><h4>Pasaporte:</h4></CardTitle>
+                            <input className="search-bar" type="text" value={pasaporte} onChange={(e) => setPasaporte(e.target.value)} />
+                        </label>
+                    </div>
+                    <div className="input-group mb-3">
 
-                    <label>
-                        <CardTitle><h4>Limit:</h4></CardTitle>
-                        <input className="search-bar" type="text" value={limit} onChange={(e) => setLimit(e.target.value)} />
-                    </label>
-                </div>
+                        <label>
+                            <CardTitle><h4>Limit:</h4></CardTitle>
+                            <input className="search-bar" type="text" value={limit} onChange={(e) => setLimit(e.target.value)} />
+                        </label>
+                    </div>
 
-                <div>
+                    <div>
 
 
-                    <Button  className="btn btn-outline-success btn-lg" onClick={handleSearchClicked}>Search</Button>
+                        <Button className="btn btn-outline-success btn-lg" onClick={handleSearchClicked}>Search</Button>
 
-                </div>
-                <ul>
-                    {listPassengers.map((passenger) =>
-                        <PassengerItem nombre={passenger.nombre} apellido={passenger.apellido} pasaporte={passenger.pasaporte} passengerId={passenger._id} />)}
+                    </div>
+                    <ul>
+                        {listPassengers.map((passenger) =>
+                            <PassengerItem nombre={passenger.nombre} apellido={passenger.apellido} pasaporte={passenger.pasaporte} passengerId={passenger._id} />)}
 
-                </ul>
+                    </ul>
 
-                        </CardBody>
+                </CardBody>
             </Card>
         </Container>
     )
